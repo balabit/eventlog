@@ -5,7 +5,7 @@ AM_INIT_AUTOMAKE(eventlog, "0.2.2", 1)
 AM_CONFIG_HEADER(config.h)
 AM_DISABLE_STATIC
 
-CFLAGS="-Wall -g"
+CFLAGS="${CFLAGS} -Wall -g"
 CPPFLAGS="-D_GNU_SOURCE"
 
 AC_ARG_ENABLE(dlsym-wrapper,
