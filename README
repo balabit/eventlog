@@ -32,3 +32,8 @@ make DESTDIR=/tmp/staging install
 which will use the /tmp/staging directory as root and copy all files beneath
 as it were a real system.
 
+Copyright
+---------
+
+EventLog is distributed under the terms of a BSD style license, for details
+see the file COPYING.
