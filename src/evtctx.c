@@ -170,6 +170,15 @@ evt_ctx_free(EVTCONTEXT *ctx)
   assert(ctx->ec_ref > 0);
   if (--ctx->ec_ref == 0)
     {
+      EVTTAGHOOK *p, *p_next;
+      
+      p = ctx->ec_tag_hooks;
+      while (p)
+        {
+          p_next = p->et_next;
+          free(p);
+          p = p_next;
+        }
       free(ctx);
     }
 }

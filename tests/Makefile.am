@@ -1,4 +1,4 @@
-CPPFLAGS=-I../src
+AM_CPPFLAGS=-I$(top_srcdir)/src
 
 noinst_PROGRAMS = evtrec evtfmt evtsyslog evtsyslog-macros
 
