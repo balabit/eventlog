@@ -1,9 +1,12 @@
 dnl Process this file with autoconf to produce a configure script.
 
 AC_INIT(src/evtrec.c)
-AM_INIT_AUTOMAKE(eventlog, "0.2.2", 1)
+AM_INIT_AUTOMAKE(eventlog, "0.2.3", 1)
+if test -n "$SNAPSHOT_VERSION"; then
+        VERSION=$VERSION+$SNAPSHOT_VERSION
+fi
+
 AM_CONFIG_HEADER(config.h)
-AM_DISABLE_STATIC
 
 CFLAGS="${CFLAGS} -Wall -g"
 CPPFLAGS="-D_GNU_SOURCE"
