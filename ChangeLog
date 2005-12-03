@@ -2,6 +2,30 @@
 # arch-tag: automatic-ChangeLog--bazsi@balabit.hu--bazsi-1/eventlog--mainline--1.0
 #
 
+2005-12-03 11:21:29 GMT	Balazs Scheidler <bazsi@balabit.hu>	patch-9
+
+    Summary:
+      some more build system specific fixes, eventlog can now be released with ZBS
+    Revision:
+      eventlog--mainline--1.0--patch-9
+
+    
+    
+
+    new files:
+     .arch-ids/VERSION.id .arch-ids/dist.conf.in.id VERSION
+     dist.conf.in
+
+    modified files:
+     ChangeLog Makefile.am NEWS configure.in debian/changelog.in
+
+    renamed files:
+     debian/.arch-ids/changelog.id
+       ==> debian/.arch-ids/changelog.in.id
+     debian/changelog
+       ==> debian/changelog.in
+
+
 2005-12-03 10:11:14 GMT	Balazs Scheidler <bazsi@balabit.hu>	patch-8
 
     Summary:

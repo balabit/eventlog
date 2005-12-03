@@ -1,4 +1,4 @@
-NEWS for the 0.2.4 release
+eventlog 0.2.4
 	Sat, 03 Dec 2005 11:09:40 +0100
 
 	A proper release in a long time, syslog-ng itself relied on the
@@ -8,7 +8,7 @@ NEWS for the 0.2.4 release
 
 	ChangeLog is generated automatically based on tla commits.
 
-NEWS for the 0.1.2 release
+eventlog 0.1.2
 	Fri, 10 Jan 2003 10:15:48 +0100
 
 	Added two implementations of the syslog wrapper (macro and dlsym
@@ -22,7 +22,7 @@ NEWS for the 0.1.2 release
 	evtlog.h.
 
 
-NEWS for the 0.1.1 release
+eventlog 0.1.1
 	Tue,  7 Jan 2003 20:11:13 +0100
 
 	Incorporated first comments, evt_log now consumes its parameter, the
@@ -32,7 +32,7 @@ NEWS for the 0.1.1 release
 	file
 
 
-NEWS for the 0.1 release
+eventlog 0.1
 	Mon,  6 Jan 2003 17:09:58 +0100
 
 	This is the initial release of eventlog, a structured event logging
