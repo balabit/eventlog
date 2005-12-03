@@ -9,7 +9,7 @@ independent parts:
 
 * Building the event record
 
-  This is done out by the application program using the library. It is a
+  This is done by the application program using the library. It is a
   sequence of calling the following functions:
   
     evt_rec_init(...)

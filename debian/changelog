@@ -1,0 +1,21 @@
+eventlog (0.2.3+20051105) experimental; urgency=low
+
+  * New upstream version. Closes: #337654, #333202
+
+ -- SZALAY Attila <sasa@debian.org>  Sun,  6 Nov 2005 23:08:18 +0000
+
+eventlog (0.2.3+20051031) experimental; urgency=low
+
+  * New upstream version.
+
+ -- SZALAY Attila <sasa@debian.org>  Mon, 31 Oct 2005 19:06:44 +0000
+
+eventlog (0.2.3+20050116+1856) experimental; urgency=low
+
+  * Initial Release
+
+ -- SZALAY Attila <sasa@debian.org>  Tue, 24 May 2005 20:21:06 +0200
+
+Local variables:
+mode: debian-changelog
+End:

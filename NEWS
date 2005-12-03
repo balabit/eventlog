@@ -1,3 +1,13 @@
+NEWS for the 0.2.4 release
+	Sat, 03 Dec 2005 11:09:40 +0100
+
+	A proper release in a long time, syslog-ng itself relied on the
+        latest snapshot until now.
+
+	Added debianization files.
+
+	ChangeLog is generated automatically based on tla commits.
+
 NEWS for the 0.1.2 release
 	Fri, 10 Jan 2003 10:15:48 +0100
 
