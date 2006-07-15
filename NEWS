@@ -1,3 +1,10 @@
+eventlog 0.2.5
+	Sat, 15 Jul 2006 17:22:32 +0200
+
+	The order of tags is reversed. Previously eventlog generated
+        messages with the tag ordering opposite of what the application
+        requested.  This is now fixed.
+
 eventlog 0.2.4
 	Sat, 03 Dec 2005 11:09:40 +0100
 
