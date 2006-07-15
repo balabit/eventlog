@@ -44,9 +44,15 @@
 void
 evt_rec_add_tag(EVTREC *e, EVTTAG *tag)
 {
-  /* make it the first in list */
-  tag->et_next = e->ev_pairs;
-  e->ev_pairs = tag;
+  /* make it the last in list */
+  tag->et_next = NULL;
+  
+  if (e->ev_last_pair)
+    e->ev_last_pair->et_next = tag;
+  else
+    e->ev_pairs = tag;
+    
+  e->ev_last_pair = tag;
 }
 
 void
@@ -103,6 +109,7 @@ evt_rec_init(EVTCONTEXT *ctx, int syslog_pri, const char *desc)
       e->ev_ctx = evt_ctx_ref(ctx);
       e->ev_desc = strdup(desc);
       e->ev_pairs = NULL;
+      e->ev_last_pair = NULL;
       e->ev_ref = 1;
       e->ev_syslog_pri = syslog_pri;
       if (!evt_rec_call_hooks(e))

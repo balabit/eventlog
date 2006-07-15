@@ -99,12 +99,13 @@ struct __evtrec
   int ev_syslog_pri;
   char *ev_desc;
   EVTTAG *ev_pairs;
+  EVTTAG *ev_last_pair;
   EVTCONTEXT *ev_ctx;
 };
 
 struct __evttag
 {
-  struct __evttag *et_next;
+  EVTTAG *et_next;
   char *et_tag;
   char *et_value;
 };
