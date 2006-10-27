@@ -62,4 +62,10 @@ AC_SUBST(SNAPSHOT_VERSION)
 AC_SUBST(SOURCE_REVISION)
 
 
-AC_OUTPUT(Makefile src/Makefile tests/Makefile eventlog.pc)
+AC_OUTPUT(Makefile 
+        src/Makefile 
+        tests/Makefile 
+        eventlog.pc 
+        eventlog.spec.bb 
+        solbuild/Makefile
+        )

@@ -1,0 +1,83 @@
+#
+#  Specfile used by BalaBit internally.
+#
+Summary: Syslog event logger library
+Name: libevtlog0
+Version: @VERSION@
+Release: 1
+License: GPL
+Group: System Environment/Daemons
+Source: eventlog_%{version}.tar.gz
+URL: http://www.balabit.com
+Packager: Tamas Pal <folti@balabit.hu>
+Vendor: Balabit IT Ltd.
+BuildRoot: %{_tmppath}/%{name}-root
+BuildRequires: bison, flex, gcc-c++
+#BuildConflicts:
+#Exclusivearch: i386
+
+%define prefix /usr
+
+%description
+The EventLog library aims to be a replacement of the simple syslog() API
+provided on UNIX systems. The major difference between EventLog and syslog
+is that EventLog tries to add structure to messages.
+
+EventLog provides an interface to build, format and output an event record.
+The exact format and output method can be customized by the administrator
+via a configuration file.
+
+This package is the runtime part of the library.
+
+%package -n libevtlog-dev
+Summary: libevtlog development package
+Group: Development/Libraries
+Requires: libevtlog0 = %{version}
+Provides: libevtlog-devel
+%description -n libevtlog-dev
+The EventLog library aims to be a replacement of the simple syslog() API
+provided on UNIX systems. The major difference between EventLog and syslog
+is that EventLog tries to add structure to messages.
+.
+EventLog provides an interface to build, format and output an event record.
+The exact format and output method can be customized by the administrator
+via a configuration file.
+.
+This package contains the development files.
+
+%prep
+%setup -q -n eventlog-%{version}
+
+%build
+
+# build syslog-ng using the bundled libol
+
+./configure --prefix=%{prefix} --mandir=/usr/share/man --infodir=/usr/share/info \
+  --sysconfdir=/etc
+make
+
+%install
+make install DESTDIR="$RPM_BUILD_ROOT"
+
+%files
+%defattr(-,root,root)
+%docdir %{prefix}/share/doc/libbevtlog0-@VERSION@
+%{prefix}/lib/libevtlog*.so*
+%files -n libevtlog-dev
+%defattr(-,root,root)
+%{prefix}/include/eventlog/*.h
+%{prefix}/lib/libevtlog.a
+%{prefix}/lib/libevtlog.la
+%{prefix}/lib/libevtlog*.so
+%{prefix}/lib/pkgconfig/eventlog.pc
+
+%post -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
+
+%check
+%clean
+[ $RPM_BUILD_ROOT == / ] || rm -rf $RPM_BUILD_ROOT
+
+%changelog
+* Tue Oct 26 2006 Tamas Pal <folti@balabit.com>
+- initial packaging
