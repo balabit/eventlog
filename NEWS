@@ -1,3 +1,9 @@
+eventlog 0.2.6
+	Mon, 30 Oct 2006 19:42:35 +0100
+
+	Added build scripts for RHEL3/4, Solaris, and AIX 5.2
+
+
 eventlog 0.2.5
 	Sat, 15 Jul 2006 17:22:32 +0200
 
