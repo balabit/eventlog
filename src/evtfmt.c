@@ -57,7 +57,9 @@ evtrec_format_plain(EVTREC *e)
     return NULL;
   
   evt_str_append_escape_bs(es, e->ev_desc, strlen(e->ev_desc), ';');
-  evt_str_append(es, "; ");
+  evt_str_append(es, ";");
+  if (e->ev_pairs)
+    evt_str_append(es, " ");
   for (et = e->ev_pairs; et; et = et->et_next)
     {
       evt_str_append(es, et->et_tag);
