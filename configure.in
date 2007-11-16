@@ -30,12 +30,15 @@ fi
 
 AM_CONFIG_HEADER(config.h)
 
-CFLAGS="${CFLAGS} -Wall -g"
-CPPFLAGS="-D_GNU_SOURCE"
 
 AC_ARG_ENABLE(dlsym-wrapper,
 	[  --enable-dlsym-wrapper	Enable dlsym based syslog wrapper],
 	enable_dlsym_wrapper=yes)
+
+AC_ARG_ENABLE(debug,
+	[  --enable-debug	Enable debug information],
+	enable_debug=yes,
+        enable_debug=no)
 
 dnl Checks for programs.
 AC_PROG_CC
@@ -50,6 +53,14 @@ AC_C_CONST
 
 dnl Checks for library functions.
 AC_CHECK_FUNCS(strdup strerror)
+
+if test "x$ac_compiler_gnu" = "xyes"; then
+	CFLAGS="${CFLAGS} -Wall"
+	if test "x$enable_debug" = "xyes"; then
+		CFLAGS="-Wall -g"
+	fi
+	CPPFLAGS="-D_GNU_SOURCE"
+fi
 
 if test x$enable_dlsym_wrapper = xyes; then
 	AC_CHECK_LIB(dl, dlsym)
