@@ -99,8 +99,15 @@ evt_read_config(EVTCONTEXT *ctx)
     {
       char *keyword, *value;
       
+      if (line[0] == '#' || line[0] == '\n')
+        continue;
+      
       keyword = strtok(line, " \t\n");
       value = strtok(NULL, " \t\n");
+      
+      if (!keyword || !value)
+        continue;
+      
       while (*value == ' ' || *value == '\t' || *value == '\n')
         value++;
         
