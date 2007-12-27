@@ -100,13 +100,13 @@ evt_read_config(EVTCONTEXT *ctx)
       char *keyword, *value;
       
       if (line[0] == '#' || line[0] == '\n')
-        continue;
+        goto next;
       
       keyword = strtok(line, " \t\n");
       value = strtok(NULL, " \t\n");
       
       if (!keyword || !value)
-        continue;
+        goto next;
       
       while (*value == ' ' || *value == '\t' || *value == '\n')
         value++;
@@ -123,6 +123,7 @@ evt_read_config(EVTCONTEXT *ctx)
         {
           ctx->ec_flags = strtoul(value, NULL, 0) & EF_ADD_ALL;
         }
+     next:
       fgets(line, sizeof(line), fp);
     }
 }
