@@ -17,7 +17,7 @@ $(STAMPDIR)/stamp-setup:
 
 configure: $(STAMPDIR)/stamp-configure
 $(STAMPDIR)/stamp-configure: setup
-	CFLAGS="-mcpu=v9 -mtune=v9" ./configure --prefix=$(PREFIX)
+	./configure --prefix=$(PREFIX)
 	touch $@
 
 build: $(STAMPDIR)/stamp-build
