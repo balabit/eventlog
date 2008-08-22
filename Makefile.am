@@ -1,5 +1,5 @@
 
-SUBDIRS = src tests solbuild tgzbuild
+SUBDIRS = src tests solbuild tgz2build
 
 EXTRA_DIST = VERSION NEWS PORTS CREDITS doc/API.txt doc/DESIGN.txt doc/configuration.txt \
 	debian/changelog debian/changelog.in debian/compat debian/control debian/copyright \

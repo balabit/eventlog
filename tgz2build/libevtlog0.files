@@ -1,1 +1,1 @@
-/opt/syslog-ng/lib/libevtlog.so.*
+/opt/syslog-ng/lib/libevtlog.so*

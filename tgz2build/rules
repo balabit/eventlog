@@ -4,14 +4,14 @@ include tgz2build/rules.conf
                                                                                 
 STAMPDIR=tgz2build/stamps
 
-CONFIGURE_OPTS := --prefix $(ZBS_PREFIX) --enable-ssl
+CONFIGURE_OPTS := --prefix $(ZBS_PREFIX) --enable-shared
 
-ifeq (($findstring solaris,($ZBS_DIST)),solaris)
-  CONFIGURE_OPTS += --enable-ssl
-  ifeq ($(ZBS_DIST),solaris-10)
-    CONFIGURE_OPTS += --enable-dynamic-linking
-  endif
+ifneq (,$(findstring solaris,$(ZBS_DIST)))
+	ifneq (,$(findstring amd64,$(ZBS_ARCH)))
+		CONFIGURE_OPTS  += 
+	endif
 endif
+
 
 all: binary
 
@@ -29,15 +29,15 @@ $(STAMPDIR)/stamp-configure:
 
 build: $(STAMPDIR)/stamp-build
 $(STAMPDIR)/stamp-build:
-	make
+	$(MAKE)
 	touch $@
 
 install:
 	rm -rf $(ZBS_STAGE_DIR)
-	make install DESTDIR=$(ZBS_STAGE_DIR)
+	$(MAKE) install DESTDIR=$(ZBS_STAGE_DIR)
         
 clean:
 	rm -rf tgz2build/stamps || true
 	rm -rf tgz2build/staging || true
-	make clean
+	$(MAKE) clean
 

@@ -75,7 +75,8 @@ AC_SUBST(SOURCE_REVISION)
 
 AC_OUTPUT(Makefile 
         src/Makefile 
-        tests/Makefile 
+        tests/Makefile
+        tgz2build/Makefile
         eventlog.pc 
         eventlog.spec.bb 
         solbuild/Makefile
