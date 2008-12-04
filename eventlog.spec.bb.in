@@ -4,7 +4,7 @@
 Summary: Syslog event logger library
 Name: libevtlog0
 Version: @VERSION@
-Release: 1
+Release: 1%{?dist}
 License: GPL
 Group: System Environment/Daemons
 Source: eventlog_%{version}.tar.gz
