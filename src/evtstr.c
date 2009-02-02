@@ -96,7 +96,7 @@ evt_str_append_escape_bs(EVTSTR *es,
       
       if ((unsigned) unescaped[i] < 32 || (unsigned) unescaped[i] > 127)
         {
-          sprintf(&buf[dst], "\\x%02x", (unsigned int) unescaped[i]);
+          sprintf(&buf[dst], "\\x%02x", (unsigned char) unescaped[i]);
           dst += 4;
         }
       else if (unescaped[i] == escape_char)
@@ -130,7 +130,7 @@ evt_str_append_escape_xml_attr(EVTSTR *es,
     {
       if ((unsigned) unescaped[i] < 32)
         {
-          sprintf(&buf[dst], "&#x%02x;", (unsigned int) unescaped[i]);
+          sprintf(&buf[dst], "&#x%02x;", (unsigned char) unescaped[i]);
           dst += 6;
         }
       else if (unescaped[i] == '"')
@@ -164,7 +164,7 @@ evt_str_append_escape_xml_pcdata(EVTSTR *es,
     {
       if ((unsigned) unescaped[i] < 32)
         {
-          sprintf(&buf[dst], "&#x%02x;", (unsigned int) unescaped[i]);
+          sprintf(&buf[dst], "&#x%02x;", (unsigned char) unescaped[i]);
           dst += 6;
         }
       else if (unescaped[i] == '<')
