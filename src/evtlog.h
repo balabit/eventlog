@@ -40,7 +40,9 @@
 #ifndef __EVTLOG_H_INCLUDED
 #define __EVTLOG_H_INCLUDED
 
-#include <syslog.h>
+#ifndef _MSC_VER
+# include <syslog.h>
+#endif
 #include <stdarg.h>
 
 #include "evtmaps.h"

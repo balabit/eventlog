@@ -46,6 +46,10 @@
 #include <config.h>
 #endif
 
+#ifdef _MSC_VER
+#include <windows.h>
+#endif
+
 #include <sys/types.h>
 
 /* whether to add the given default tag */

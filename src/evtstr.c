@@ -45,6 +45,7 @@
 #include <assert.h>
 #include <stdio.h>
 #include <string.h>
+#include <malloc.h>
 
 /* event string handling */
 
@@ -87,7 +88,7 @@ evt_str_append_escape_bs(EVTSTR *es,
   /* FIXME: this is a gcc extension, alternative would be to use alloca(),
    * which is not portable */
 
-  char buf[4*unescaped_len + 1]; 
+  char *buf = (char *)alloca(4*unescaped_len + 1);
                              
   int i, dst;
   
@@ -122,7 +123,7 @@ evt_str_append_escape_xml_attr(EVTSTR *es,
   /* FIXME: this is a gcc extension, alternative would be to use alloca(),
    * which is not portable */
 
-  char buf[6*unescaped_len + 1]; 
+  char *buf = (char *)alloca(6*unescaped_len + 1);
                              
   int i, dst;
   
@@ -156,7 +157,7 @@ evt_str_append_escape_xml_pcdata(EVTSTR *es,
   /* FIXME: this is a gcc extension, alternative would be to use alloca(),
    * which is not portable */
 
-  char buf[6*unescaped_len + 1]; 
+  char *buf = (char *)alloca(6*unescaped_len + 1);
                              
   int i, dst;
   

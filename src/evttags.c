@@ -41,10 +41,16 @@
  
 #include "evt_internals.h"
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdio.h>
 #include <stdarg.h>
+
+#ifdef _MSC_VER
+#ifndef snprintf
+#define snprintf _snprintf
+#endif
+#endif
 
 void
 evt_tag_free(EVTTAG *et)
