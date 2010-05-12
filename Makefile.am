@@ -1,5 +1,6 @@
 
-SUBDIRS = src tests solbuild tgzbuild tgz2build
+ACLOCAL_AMFLAGS=-I m4
+SUBDIRS = src tests solbuild tgzbuild tgz2build winbuild
 
 EXTRA_DIST = VERSION NEWS PORTS CREDITS doc/API.txt doc/DESIGN.txt doc/configuration.txt \
 	debian/changelog debian/changelog.in debian/compat debian/control debian/copyright \

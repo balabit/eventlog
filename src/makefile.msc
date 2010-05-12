@@ -1,0 +1,38 @@
+## Use: nmake -f makefile.msc
+!IFNDEF COMPILE_ENV
+COMPILE_ENV=c:\build
+!ENDIF
+
+!INCLUDE $(COMPILE_ENV)\include\make.msc
+ROOT= $(COMPILE_ENV)\out
+################################################################
+
+INCLUDES = -FI$(TOP)\include\msvc_recommended_pragmas.h -I .
+DEPCFLAGS = -Zm400 $(INTL_CFLAGS) $(LIBICONV_CFLAGS) $(DIRENT_CFLAGS)
+
+CFLAGS = $(CFLAGS) /Fd$(PDBFILE)
+
+all: install
+
+OUTPUTS = 			\
+	evtlog.lib
+
+OBJECTS =			\
+	evtfmt.obj \
+	evtrec.obj \
+	evtstr.obj \
+	evttags.obj
+
+DLLOBJECTS = evtlog.res
+
+evtlog.lib: $(OBJECTS)
+	lib /out:$@ $(OBJECTS)
+
+install: evtlog.lib
+	if not exist $(ROOT)\include\eventlog mkdir $(ROOT)\include\eventlog
+	copy /y evtlog.h $(ROOT)\include\eventlog
+	copy /y evtmaps.h $(ROOT)\include\eventlog
+	if not exist $(ROOT)\lib mkdir $(ROOT)\lib
+	if not exist $(ROOT)\lib\pkgconfig mkdir $(ROOT)\lib\pkgconfig
+	copy /y .\evtlog.lib $(ROOT)\lib
+	copy /y ..\eventlog.pc $(ROOT)\lib\pkgconfig

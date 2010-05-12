@@ -28,6 +28,8 @@ if test -n "$SNAPSHOT_VERSION"; then
         VERSION=$VERSION+$SNAPSHOT_VERSION
 fi
 
+AC_CONFIG_MACRO_DIR([m4])
+
 AM_CONFIG_HEADER(config.h)
 
 
@@ -81,4 +83,5 @@ AC_OUTPUT(Makefile
         eventlog.pc 
         eventlog.spec.bb 
         solbuild/Makefile
+        winbuild/Makefile
         )
