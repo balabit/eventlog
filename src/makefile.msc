@@ -18,6 +18,7 @@ OUTPUTS = 			\
 	evtlog.lib
 
 OBJECTS =			\
+	evtctx.obj \
 	evtfmt.obj \
 	evtrec.obj \
 	evtstr.obj \

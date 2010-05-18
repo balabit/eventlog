@@ -49,6 +49,10 @@
 #include <string.h>
 #include <assert.h>
 
+#ifdef _MSC_VER
+#define getpid GetCurrentProcessId
+#endif
+
 static int
 evtrec_add_standard_tags(EVTREC *e, void *userptr)
 {
@@ -157,7 +161,9 @@ evt_ctx_init(const char *prog, int syslog_fac)
       ctx->ec_prog = (char *) prog;
       ctx->ec_syslog_fac = syslog_fac;
       evt_ctx_tag_hook_add(ctx, evtrec_add_standard_tags, NULL);
+#ifndef _MSC_VER
       evt_syslog_wrapper_init();
+#endif
       evt_read_config(ctx);
     }
      
