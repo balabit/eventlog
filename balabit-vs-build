@@ -72,18 +72,25 @@ case "$cmd" in
     echo "TARGET=$TARGET" > $ZWACONF
     ;;
   make)
-    if [ "$ZBS_BUILDER_TYPE" = "win2" ]; then
     # kill variables declared by unix make with contents incompatible by nmake.
-      unset MAKE
-      unset MAKEFLAGS
-      unset MAKEDIR
-    fi
+    unset MAKE
+    unset MAKEFLAGS
+    unset MAKEDIR
     set -x
     if [ -z "$ZBS_PREFIX" ]; then
       ZBS_PREFIX=.
     fi
     OUT=$ZBS_PREFIX/out
+    if [ -n "$ZWA_INSTALL_DIR" ]; then
+      export COMPILE_ENV="`cygpath -m $ZWA_INSTALL_DIR`"
+      OUT=$COMPILE_ENV
+      export DEP=$COMPILE_ENV
+    fi
     export COMPILE_ENV="`cygpath -w $COMPILE_ENV`"
+    if [ ! -f eventlog.pc ]; then
+        # just make a dummy one to make makefile.msc happy
+        sed_file eventlog.pc
+    fi
     mkdir -p $OUT
     if [ -z "$1" ]; then
       nmake -nologo -f makefile.msc ROOT="`cygpath -w $OUT`"
@@ -98,7 +105,7 @@ case "$cmd" in
           ;;
         install)
           mkdir -p ${TARGET}
-          if [ -n "$OUT" ]; then
+          if [ -n "$OUT" ] && [ "$OUT" != "`cygpath -m $TARGET`" ]; then
             cd ${OUT}
             mv * ${TARGET}
           fi
