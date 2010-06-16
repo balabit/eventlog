@@ -6,7 +6,7 @@ EXTRA_DIST = VERSION NEWS PORTS CREDITS doc/API.txt doc/DESIGN.txt doc/configura
 	debian/changelog debian/changelog.in debian/compat debian/control debian/copyright \
 	debian/libevtlog-dev.install debian/libevtlog0.install debian/libevtlog0.shlibs debian/rules \
 	eventlog.spec.bb.in eventlog.spec.bb \
-	balabit-vs-build
+	balabit-vs-build makefile.msc
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = eventlog.pc
