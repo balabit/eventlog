@@ -10,6 +10,7 @@ ifneq (,$(findstring solaris,$(ZBS_DIST)))
 	ifneq (,$(findstring amd64,$(ZBS_ARCH)))
 		CONFIGURE_OPTS  += 
 	endif
+  LDFLAGS += -Wl,-R/opt/syslog-ng/lib
 endif
 
 
@@ -24,7 +25,7 @@ $(STAMPDIR)/stamp-setup:
 
 configure: $(STAMPDIR)/stamp-configure
 $(STAMPDIR)/stamp-configure:
-	./configure $(CONFIGURE_OPTS)
+	LDFLAGS="$(LDFLAGS)" ./configure $(CONFIGURE_OPTS)
 	touch $@
 
 build: $(STAMPDIR)/stamp-build
