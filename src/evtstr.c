@@ -48,6 +48,7 @@
 #ifdef _MSC_VER
 #include <malloc.h>
 #endif
+#include <alloca.h>
 
 /* event string handling */
 
