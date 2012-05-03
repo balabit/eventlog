@@ -81,7 +81,6 @@ AC_OUTPUT(Makefile
         tgzbuild/Makefile
         tgz2build/Makefile
         eventlog.pc 
-        eventlog.spec.bb 
         solbuild/Makefile
         winbuild/Makefile
         )
