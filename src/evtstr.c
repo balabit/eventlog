@@ -88,17 +88,15 @@ evt_str_append_escape_bs(EVTSTR *es,
 {
   /* a single character is escaped to at most 4 characters: \xXX */
 
-  /* FIXME: this is a gcc extension, alternative would be to use alloca(),
-   * which is not portable */
-
   char *buf = (char *)alloca(4*unescaped_len + 1);
                              
   int i, dst;
   
   for (i = 0, dst = 0; i < unescaped_len; i++)
     {
+      unsigned c = (unsigned) unescaped[i];
       
-      if ((unsigned) unescaped[i] < 32 || (unsigned) unescaped[i] > 127)
+      if (c < 32 && (c != '\n' && c != '\r' && c != '\t'))
         {
           sprintf(&buf[dst], "\\x%02x", (unsigned char) unescaped[i]);
           dst += 4;
