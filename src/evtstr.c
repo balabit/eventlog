@@ -96,7 +96,7 @@ evt_str_append_escape_bs(EVTSTR *es,
     {
       unsigned c = (unsigned) unescaped[i];
       
-      if (c < 32 && (c != '\n' && c != '\r' && c != '\t'))
+      if (c < 32 && c != '\t')
         {
           sprintf(&buf[dst], "\\x%02x", (unsigned char) unescaped[i]);
           dst += 4;
