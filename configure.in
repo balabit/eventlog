@@ -74,6 +74,7 @@ AC_SUBST(RELEASE_TAG)
 AC_SUBST(SNAPSHOT_VERSION)
 AC_SUBST(SOURCE_REVISION)
 
+AC_CHECK_HEADERS([alloca.h malloc.h])
 
 AC_OUTPUT(Makefile 
         src/Makefile 
