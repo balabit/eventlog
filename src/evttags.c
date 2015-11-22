@@ -45,6 +45,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdarg.h>
+#include <assert.h>
 
 #ifdef _MSC_VER
 #ifndef snprintf
@@ -66,8 +67,9 @@ evt_tag_str(const char *tag, const char *value)
   EVTTAG *p;
   
   /* neither tag nor value can be NULL */
-  if (!tag || !value)
-    return 0;
+  assert(tag);
+  if (!value)
+    value = "(null)";
   
   p = (EVTTAG *) malloc(sizeof(EVTTAG));
   if (p)
